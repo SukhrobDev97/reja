@@ -18,13 +18,14 @@ app.set("views", "views");
 app.set("view engine", "ejs") // VIEW folderini o'qiydi;
 
 // Step 4; Routes; Serverni ishga tushirish
-app.get("/gift", function (req, res) {
-    res.end(`<h1>Gift Page</h1>`)
-});
+app.post("/create-item", function (req, res) {
+    console.log(req.body);
+    res.json({ test: "success" })
+})
 
-app.get("/hello", function (req, res) {
-    res.end(`<h1>Hello World </h1>`)
-});
+app.get('/', function (req, res) {
+    res.render('harid')
+})
 
 //pass to server
 const server = http.createServer(app);

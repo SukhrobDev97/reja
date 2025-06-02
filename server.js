@@ -2,6 +2,17 @@ console.log('Web Serverni boshlash!');
 const express = require('express'); // npm install express
 const app = express(); // express ning app  objectini bizga yuboradi; va u orqali biz express server quramz
 const http = require('http');
+const fs = require('fs');
+const { isUtf8 } = require('buffer');
+
+let user;
+fs.readFile("database/user.json", "utf8", (err, data) => {
+    if (err) {
+        console.log('Err:', err)
+    } else {
+        user = JSON.parse(data);
+    }
+})
 //steps
 
 // Step 1  Entry Code :   express ga kirib kelayotgan infolarga bogliq bolgan codes yoziladi;
@@ -21,6 +32,10 @@ app.set("view engine", "ejs") // VIEW folderini o'qiydi;
 app.post("/create-item", function (req, res) {
     console.log(req.body);
     res.json({ test: "success" })
+});
+
+app.get("/author", (req, res) => {
+    res.render("author", { user: user })
 })
 
 app.get('/', function (req, res) {

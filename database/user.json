@@ -4,6 +4,7 @@
     "age": 20,
     "residence": "S.Korea",
     "adress": "S.Korea, Busan",
+    "freelance": "available",
     "languages": [
         "Uzbek",
         "Korean",
@@ -21,13 +22,15 @@
         "Materialize",
         "Styling",
         "Sass",
+        "Less",
         "Django",
         "Flask",
         "GIT Knowledge"
     ],
+    "job": "Software Engeneer in Seoul",
     "work_place": "IT Company",
-    "service_desc": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
-    "about_me": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, volutpat feugiat placerat lobortis. Natoque.",
+    "extra_info": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat.",
+    "services": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, volutpat feugiat placerat lobortis. Natoque.",
     "city": "Denau",
     "title": [
         "Flower",

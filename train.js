@@ -118,3 +118,25 @@ qoldiqliBolish(10, 7, (err, data) => {
         console.log("data:", data);
     }
 });
+
+
+// B-TASK: 
+
+// Shunday function tuzing, u 1ta string parametrga ega bolsin, hamda osha stringda qatnashgan raqamlarni sonini bizga return qilsin.
+// MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.
+
+// yechim
+
+function getNum(x) {
+    let countNum = 0;
+    for (let i = 0; i < x.length; i++) {
+        if (x[i] >= '0' && x[i] <= "9") {
+            countNum++;
+        }
+
+    }
+    return countNum
+}
+
+const numsOnly = getNum("ad2a54y79wet0sfgb9")
+console.log('result', numsOnly)

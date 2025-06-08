@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.set("views", "views");
-app.set("view engine", "ejs")
+app.set("view engine", "ejs") // VIEW folderini o'qiydi;
 
 // Step 4; Routes; Serverni ishga tushirish
 app.post("/create-item", function (req, res) {

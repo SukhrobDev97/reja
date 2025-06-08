@@ -6,7 +6,7 @@ const { isUtf8 } = require('buffer');
 
 
 //Mongodb call
-
+const db = require("./server").db();
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
     if (err) {
@@ -17,23 +17,29 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
 })
 //steps
 
-// Step 1  Entry Code :   express ga kirib kelayotgan infolarga bogliq bolgan codes yoziladi;
-app.use(express.static('public')); // har qanday browser dan expressga kirib kelayotgan client requests uchun 'public' folder ochiq! Only this  folder 
-app.use(express.json());    //kirib kelayotgan JSON formatdagi data ni object ga o'giradi!
-app.use(express.urlencoded({ extended: true }))   // html form orqali kiritilgan request/posts larni express server qabul qiladi! Unda ignore qiladi!
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
 
 // Step 2  Session code
 
-// Step 3 View code: BSSR(backend server side rendering) ;EJS orqali backendda client view(frontEnd) hosil qilamiz va clientga yubormix(html)
-// npm install ejs
+
 app.set("views", "views");
-app.set("view engine", "ejs") // VIEW folderini o'qiydi;
+app.set("view engine", "ejs")
 
 // Step 4; Routes; Serverni ishga tushirish
 app.post("/create-item", function (req, res) {
-    console.log(req.body);
-    res.json({ test: "success" })
+    console.log("user entered / create-item ")
+    const new_reja = req.body.reja;
+    db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.end('smth went wrong')
+        } else {
+            res.end('successfully added')
+        }
+    })
 });
 
 app.get("/author", (req, res) => {
@@ -41,7 +47,18 @@ app.get("/author", (req, res) => {
 })
 
 app.get('/', function (req, res) {
-    res.render('reja')
+    console.log("user entered /")
+    db.collection('plans')
+        .find()
+        .toArray((err, data) => {
+            if (err) {
+                console.log(err)
+                res.end('smth went wrong')
+            } else {
+                console.log(data)
+                res.render('reja', { items: data })
+            }
+        })
 })
 
 module.exports = app;

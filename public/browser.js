@@ -25,4 +25,22 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     }).catch((err) => {
         console.log("ERROR: Try again")
     })
+});
+
+//delete operation
+
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete-me")) {
+        if (confirm("Do you want to delete this?")) {
+            axios
+                .post('/delete-item', { id: e.target.getAttribute("data-id") })
+                .then((response) => {
+                    console.log(response.data)
+                    e.target.parentElement.parentElement.remove();
+                })
+                .catch((err) => {
+                    console.log("ERROR: Try again")
+                })
+        }
+    }
 })

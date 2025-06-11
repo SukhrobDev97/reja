@@ -103,21 +103,21 @@
 console.log("===== EXECUTE =====");
 
 // DEFINE
-function qoldiqliBolish(a, b, callback) {
-    if (b === 0) {
-        callback("Mahraj nolga teng bololmaydi", null);
-    } else {
-        callback(null, a % b);
-    }
-}
+// function qoldiqliBolish(a, b, callback) {
+//     if (b === 0) {
+//         callback("Mahraj nolga teng bololmaydi", null);
+//     } else {
+//         callback(null, a % b);
+//     }
+// }
 
-// CALL
-qoldiqliBolish(10, 7, (err, data) => {
-    if (err) console.log("Error:", err);
-    else {
-        console.log("data:", data);
-    }
-});
+// // CALL
+// qoldiqliBolish(10, 7, (err, data) => {
+//     if (err) console.log("Error:", err);
+//     else {
+//         console.log("data:", data);
+//     }
+// });
 
 
 // B-TASK: 
@@ -126,7 +126,7 @@ qoldiqliBolish(10, 7, (err, data) => {
 // MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.
 
 // yechim
-
+/*
 function getNum(x) {
     let countNum = 0;
     for (let i = 0; i < x.length; i++) {
@@ -138,5 +138,24 @@ function getNum(x) {
     return countNum
 }
 
+
 const numsOnly = getNum("ad2a54y79wet0sfgb9")
 console.log('result', numsOnly)
+*/
+
+/*
+C-TASK: 
+
+Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+*/
+
+//yechim
+
+function checkContent(first, second) {
+    return [...first].sort().join('') === [...second].sort().join('')
+}
+
+const natija = checkContent("mitgroup", "gmtiprou")
+console.log(natija)
+

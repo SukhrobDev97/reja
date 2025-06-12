@@ -40,7 +40,7 @@ app.post("/create-item", function (req, res) {
 
 app.post('/delete-item', (req, res) => {
     const id = req.body.id;
-
+    console.log("Deleting id:", id);
     db.collection('plans').deleteOne(
         { _id: new mongodb.ObjectId(id) },
         function (err, data) {

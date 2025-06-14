@@ -152,10 +152,53 @@ MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
 
 //yechim
 
-function checkContent(first, second) {
-    return [...first].sort().join('') === [...second].sort().join('')
+// function checkContent(first, second) {
+//     return [...first].sort().join('') === [...second].sort().join('')
+// }
+
+// const natija = checkContent("mitgroup", "gmtiprou")
+// console.log(natija)
+/*
+D-TASK: 
+
+Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin, hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul. Har bir method ishga tushgan vaqt ham log qilinsin.
+MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud! shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
+
+*/
+
+class Shop {
+    constructor(non, lagmon, cola) {
+        this.non = non;
+        this.lagmon = lagmon;
+        this.cola = cola;
+    }
+
+    time() {
+        return new Date().toLocaleTimeString();
+    }
+
+    qoldiq() {
+        console.log(`Hozir ${this.time()} da: ${this.non} non, ${this.lagmon} lagmon, ${this.cola} cola bor.`);
+    }
+
+    sotish(mahsulot, son) {
+        if (this[mahsulot] >= son) {
+            this[mahsulot] -= son;
+            console.log(`${this.time()}: ${son} ta ${mahsulot} sotildi.`);
+        } else {
+            console.log(`${this.time()}: ${mahsulot} yetarli emas.`);
+        }
+    }
+
+    qabul(mahsulot, son) {
+        this[mahsulot] += son;
+        console.log(`${this.time()}: ${son} ta ${mahsulot} qabul qilindi.`);
+    }
 }
 
-const natija = checkContent("mitgroup", "gmtiprou")
-console.log(natija)
-
+// Ishlatish:
+const shop = new Shop(4, 5, 2);
+shop.qoldiq();
+shop.sotish('non', 3);
+shop.qabul('cola', 4);
+shop.qoldiq();

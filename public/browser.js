@@ -1,3 +1,5 @@
+
+
 console.log("FronEnd js ishga tushdi");
 
 function itemTemplate(item) {
@@ -43,4 +45,35 @@ document.addEventListener("click", function (e) {
                 })
         }
     }
+});
+
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains("edit-me")) {
+        let userEdit = prompt("Enter changes", e.target.parentElement.parentElement.querySelector('.item-text').innerHTML);
+        if (userEdit) {
+            axios
+                .post('/edit-item', {
+                    id: e.target.getAttribute("data-id"),
+                    new_input: userEdit,
+                })
+                .then((response) => {
+                    console.log(response.data)
+                    e.target.parentElement.parentElement.querySelector('.item-text').innerHTML = userEdit
+                })
+                .catch((err) => {
+                    console.log("ERROR: Try again")
+                })
+        }
+    }
+});
+
+document.getElementById('clean-all').addEventListener('click', function () {
+    axios
+        .post('/delete-all', {
+            delete_all: true
+        }).then((response) => {
+            alert(response.data.state);
+            document.location.reload()
+        })
 })
+

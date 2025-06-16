@@ -166,39 +166,55 @@ MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta 
 
 */
 
-class Shop {
-    constructor(non, lagmon, cola) {
-        this.non = non;
-        this.lagmon = lagmon;
-        this.cola = cola;
-    }
+// class Shop {
+//     constructor(non, lagmon, cola) {
+//         this.non = non;
+//         this.lagmon = lagmon;
+//         this.cola = cola;
+//     }
 
-    time() {
-        return new Date().toLocaleTimeString();
-    }
+//     time() {
+//         return new Date().toLocaleTimeString();
+//     }
 
-    qoldiq() {
-        console.log(`Hozir ${this.time()} da: ${this.non} non, ${this.lagmon} lagmon, ${this.cola} cola bor.`);
-    }
+//     qoldiq() {
+//         console.log(`Hozir ${this.time()} da: ${this.non} non, ${this.lagmon} lagmon, ${this.cola} cola bor.`);
+//     }
 
-    sotish(mahsulot, son) {
-        if (this[mahsulot] >= son) {
-            this[mahsulot] -= son;
-            console.log(`${this.time()}: ${son} ta ${mahsulot} sotildi.`);
-        } else {
-            console.log(`${this.time()}: ${mahsulot} yetarli emas.`);
-        }
-    }
+//     sotish(mahsulot, son) {
+//         if (this[mahsulot] >= son) {
+//             this[mahsulot] -= son;
+//             console.log(`${this.time()}: ${son} ta ${mahsulot} sotildi.`);
+//         } else {
+//             console.log(`${this.time()}: ${mahsulot} yetarli emas.`);
+//         }
+//     }
 
-    qabul(mahsulot, son) {
-        this[mahsulot] += son;
-        console.log(`${this.time()}: ${son} ta ${mahsulot} qabul qilindi.`);
-    }
-}
+//     qabul(mahsulot, son) {
+//         this[mahsulot] += son;
+//         console.log(`${this.time()}: ${son} ta ${mahsulot} qabul qilindi.`);
+//     }
+// }
 
-// Ishlatish:
-const shop = new Shop(4, 5, 2);
-shop.qoldiq();
-shop.sotish('non', 3);
-shop.qabul('cola', 4);
-shop.qoldiq();
+// // Ishlatish:
+// const shop = new Shop(4, 5, 2);
+// shop.qoldiq();
+// shop.sotish('non', 3);
+// shop.qabul('cola', 4);
+// shop.qoldiq();
+
+/*
+TASK E
+
+Shunday function tuzing, u bitta string argumentini qabul qilib,
+qabul qilingan stringni teskari ko'rinishda return qilsin
+
+MASALAN: getReverse("hello"); return qilsin "olleh"
+*/
+
+function getReverse(a) {
+    return [...a].reverse().join('')
+};
+
+const result = getReverse("hello")
+console.log(result)

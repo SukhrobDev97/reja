@@ -212,9 +212,24 @@ qabul qilingan stringni teskari ko'rinishda return qilsin
 MASALAN: getReverse("hello"); return qilsin "olleh"
 */
 
-function getReverse(a) {
-    return [...a].reverse().join('')
-};
+// function getReverse(a) {
+//     return [...a].reverse().join('')
+// };
 
-const result = getReverse("hello")
-console.log(result)
+// const result = getReverse("hello")
+// console.log(result)
+
+/*
+F-TASK: 
+
+Shunday findDoublers function tuzing, unga faqat bitta string argument pass bolib, agar stringda bir hil harf qatnashgan bolsa true, qatnashmasa false qaytarishi kerak.
+MASALAN: getReverse("hello") return true return qiladi
+
+*/
+
+function findDoublers(string) {
+    return [...string].some((letter, i) => string.indexOf(letter) !== i);
+}
+
+
+console.log(findDoublers('JavaScript'))
